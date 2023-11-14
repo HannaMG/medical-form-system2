@@ -96,6 +96,12 @@ public class Workflow {
      * @return true if successful, false otherwise
      */
     public static boolean removeNextSteps(String condition) {
+        for(int i=0; i<nextStepsList.size(); i++) {
+            if(nextStepsList.get(i)[0].equals(condition)) {
+                nextStepsList.remove(i);
+                return true;
+            }
+        }
         return false;
     }
 }
