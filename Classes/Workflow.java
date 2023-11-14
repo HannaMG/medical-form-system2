@@ -86,7 +86,14 @@ public class Workflow {
      * @return true if insert is successful, false otherwise
      */
     public static boolean insertNextSteps(String condition, String message) {
-        return false;
+        for(int i=0; i<nextStepsList.size(); i++) {
+            if(nextStepsList.get(i)[0].equals(condition)) {
+                return false;
+            }
+        }
+        String[] newNextSteps = {condition, message};
+        nextStepsList.add(newNextSteps);
+        return true;
     }
 
     /**
