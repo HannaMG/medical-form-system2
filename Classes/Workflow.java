@@ -14,7 +14,7 @@ import java.util.Queue;
  */
 public class Workflow {
     private static Queue<Integer> completeQueue = new LinkedList<>(); //Stores completed medical form IDs
-    private static Queue<Integer> savedQueue = new LinkedList<>();; //Stores saved medical form IDs
+    private static Queue<Integer> savedQueue = new LinkedList<>(); //Stores saved medical form IDs
     private static ArrayList<String[]> nextStepsList = new ArrayList<>(); //Stores medical conditions and next steps messages available
     private static boolean savedEmpty; //Indicates whether the savedQueue is empty or not
     private static boolean completeEmpty; //Indicates whether the completeQueue is empty or not
@@ -24,7 +24,7 @@ public class Workflow {
      * @return next completed medical form ID or -1 if completeQueue is empty/unsuccessful
      */
     public static int getNextComplete() {
-        return 0;
+        return completeQueue.remove();
     }
 
     /**
@@ -32,7 +32,7 @@ public class Workflow {
      * @return next saved medical form ID or -1 if savedQueue is empty/unsuccessful
      */
     public static int getNextSaved() {
-        return 0;
+        return savedQueue.remove();
     }
 
     /**
@@ -40,7 +40,7 @@ public class Workflow {
      * @return true if savedQueue is empty, false otherwise
      */
     public static boolean isSavedEmpty() {
-        return false;
+        return savedEmpty;
     }
 
     /**
@@ -48,7 +48,7 @@ public class Workflow {
      * @return true if completeQueue is empty, false otherwise
      */
     public static boolean isCompleteEmpty() {
-        return false;
+        return completeEmpty;
     }
 
     /**
