@@ -75,7 +75,12 @@ public class Workflow {
      * @return corresponding next steps message or empty String if none is available for that medical condition
      */
     public static String getNextStepsMessage(String condition) {
-        return "None available";
+        for(int i=0; i<nextStepsList.size(); i++) {
+            if(nextStepsList.get(i)[0].equals(condition)) {
+                return nextStepsList.get(1)[1];
+            }
+        }
+        return "";
     }
 
     /**
