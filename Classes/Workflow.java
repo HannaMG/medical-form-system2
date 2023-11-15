@@ -24,7 +24,11 @@ public class Workflow {
      * @return next completed medical form ID or -1 if completeQueue is empty/unsuccessful
      */
     public static int getNextComplete() {
-        return completeQueue.remove();
+        try {
+            return completeQueue.remove();
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -32,7 +36,11 @@ public class Workflow {
      * @return next saved medical form ID or -1 if savedQueue is empty/unsuccessful
      */
     public static int getNextSaved() {
-        return savedQueue.remove();
+        try {
+            return savedQueue.remove();
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**

@@ -13,18 +13,26 @@ public class Approver implements ActionListener{
     private JTextArea nTextArea = new JTextArea(10, 50);
     JPanel inboxScr = new JPanel();
 
+    private int currentFormId;
+    private MedicalForm currentForm;
+    private String nextStepsMessage;
+
     /**
      * Sets up and shows Approver Screen
      */
     public void showApproverScreen() {
         /**
-         * Approver
+         * Approver Screen
          */
         JFrame approver = new JFrame("Approver Screen");
         approver.setVisible(true); 
         approver.setSize(1000, 700);
         approver.setLayout(new BoxLayout(approver.getContentPane(), BoxLayout.Y_AXIS));
         approver.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        /**
+         * Get and show current Medical Form ID
+         */
         
         /**
          * Confirmation Panel
@@ -125,49 +133,65 @@ public class Approver implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
             if("nextSteps".equals(e.getActionCommand())) {
-                JPanel message = new JPanel();
-                BoxLayout nLayout = new BoxLayout(message, BoxLayout.Y_AXIS);
-                message.setLayout(nLayout);
-                message.setAlignmentX(Component.CENTER_ALIGNMENT);
-                message.setPreferredSize(new Dimension(800, 450));
-                message.setMaximumSize(new Dimension(800, 450));
-
-                //Border
-                TitledBorder mBorder = new TitledBorder("Next Steps Message"); 
-                message.setBorder(mBorder);
-        
-                //Message Text
-                JLabel mLabel = new JLabel("<html>" + nTextArea.getText().replaceAll("(\r\n|\n)", "<br />") + "</html>");
-                mLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-                message.add(mLabel);
-
-                //Add to frame
-                inboxScr.add(message);
-                inboxScr.revalidate();
-                inboxScr.repaint();
+                sendNextSteps();
                 
             } else if("confirmation".equals(e.getActionCommand())) {
-                JPanel message = new JPanel();
-                BoxLayout mLayout = new BoxLayout(message, BoxLayout.Y_AXIS);
-                message.setLayout(mLayout);
-                message.setAlignmentX(Component.CENTER_ALIGNMENT);
-                message.setPreferredSize(new Dimension(800, 450));
-                message.setMaximumSize(new Dimension(800, 450));
-
-                //Border
-                TitledBorder mBorder = new TitledBorder("Confirmation Message"); 
-                message.setBorder(mBorder);
-        
-                //Message Text
-                JLabel mLabel = new JLabel("<html>" + cTextArea.getText().replaceAll("(\r\n|\n)", "<br />") + "</html>");
-                mLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-                message.add(mLabel);
-
-                //Add to frame
-                inboxScr.add(message);
-                inboxScr.revalidate();
-                inboxScr.repaint();
-
+                sendConfirmation();
             }
     }
+
+    public boolean sendConfirmation() {
+        JPanel message = new JPanel();
+        BoxLayout mLayout = new BoxLayout(message, BoxLayout.Y_AXIS);
+        message.setLayout(mLayout);
+        message.setAlignmentX(Component.CENTER_ALIGNMENT);
+        message.setPreferredSize(new Dimension(800, 450));
+        message.setMaximumSize(new Dimension(800, 450));
+
+        //Border
+        TitledBorder mBorder = new TitledBorder("Confirmation Message"); 
+        message.setBorder(mBorder);
+        
+        //Message Text
+        JLabel mLabel = new JLabel("<html>" + cTextArea.getText().replaceAll("(\r\n|\n)", "<br />") + "</html>");
+        mLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        message.add(mLabel);
+
+        //Add to frame
+        inboxScr.add(message);
+        inboxScr.revalidate();
+        inboxScr.repaint();
+
+        return true;
+    }
+
+    public boolean sendNextSteps() {
+        JPanel message = new JPanel();
+        BoxLayout nLayout = new BoxLayout(message, BoxLayout.Y_AXIS);
+        message.setLayout(nLayout);
+        message.setAlignmentX(Component.CENTER_ALIGNMENT);
+        message.setPreferredSize(new Dimension(800, 450));
+        message.setMaximumSize(new Dimension(800, 450));
+
+        //Border
+        TitledBorder mBorder = new TitledBorder("Next Steps Message"); 
+        message.setBorder(mBorder);
+        
+        //Message Text
+        JLabel mLabel = new JLabel("<html>" + nTextArea.getText().replaceAll("(\r\n|\n)", "<br />") + "</html>");
+        mLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        message.add(mLabel);
+
+        //Add to frame
+        inboxScr.add(message);
+        inboxScr.revalidate();
+        inboxScr.repaint();
+
+        return true;
+    }
+
+    public boolean deleteData(int formId) {
+        return MedicalForm.getForm(formId).deleteForm();
+    }
+
 }
