@@ -11,7 +11,8 @@ public class Approver implements ActionListener{
     private JFrame inbox = new JFrame("User Inbox");
     private JTextArea cTextArea = new JTextArea("Your submission has been recieved! Here is a copy of your answers: \n\n Name: \n DOB: \n Address: \n Alien Number: \n Medical Condition: \n Phone Number: \n Condition Start Date: \n", 5, 10);
     private JTextArea nTextArea = new JTextArea(10, 50);
-    JPanel inboxScr = new JPanel();
+    private JPanel inboxScr = new JPanel();
+    private JLabel idLabel;
 
     private int currentFormId;
     private MedicalForm currentForm;
@@ -30,9 +31,42 @@ public class Approver implements ActionListener{
         approver.setLayout(new BoxLayout(approver.getContentPane(), BoxLayout.Y_AXIS));
         approver.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //Scrolling Approver
+        JPanel approverScr = new JPanel();
+        BoxLayout saLayout = new BoxLayout(approverScr, BoxLayout.Y_AXIS);
+        approverScr.setLayout(saLayout);
+        approverScr.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         /**
-         * Get and show current Medical Form ID
+         * Information Panel
          */
+        JPanel info = new JPanel();
+        FlowLayout infoLayout = new FlowLayout();
+        info.setLayout(infoLayout);
+        info.setAlignmentX(Component.CENTER_ALIGNMENT);
+        info.setPreferredSize(new Dimension(800,80));
+        info.setMaximumSize(new Dimension(800, 80));
+
+        //Get and show current Medical Form ID
+        currentFormId = Workflow.getNextComplete();
+        if(currentFormId == -1) {
+            idLabel = new JLabel("Current Form ID: No form available.");
+        } else {
+            //currentForm = MedicalForm.getForm(currentFormId); //TODO: FIX MEDICAL FORM
+            idLabel = new JLabel("Current Form ID: " + currentFormId);
+        }
+        idLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        info.add(idLabel);
+
+        //Reload button
+        JButton reload = new JButton("Reload");
+        reload.setAlignmentX(Component.CENTER_ALIGNMENT);
+        reload.setActionCommand("reload");
+        reload.addActionListener(this);
+        info.add(reload);
+
+        //Add to scroll panel
+        approverScr.add(info);
         
         /**
          * Confirmation Panel
@@ -65,8 +99,8 @@ public class Approver implements ActionListener{
         cSend.addActionListener(this);
         confirmation.add(cSend);
         
-        //Add to frame
-        approver.getContentPane().add(confirmation);
+        //Add to scroll panel
+        approverScr.add(confirmation);
 
         /**
          * Neccessary Next Steps Panel
@@ -103,9 +137,12 @@ public class Approver implements ActionListener{
         nSend.addActionListener(this);
         nextSteps.add(nSend);
         
-        //Add to frame
-        approver.getContentPane().add(nextSteps);
+        //Add to scroll panel
+        approverScr.add(nextSteps);
 
+        //Add scroll panel to frame   
+        JScrollPane saScrBar = new JScrollPane(approverScr, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        approver.add(saScrBar);     
 
         /**
          * User Message Inbox
@@ -137,6 +174,14 @@ public class Approver implements ActionListener{
                 
             } else if("confirmation".equals(e.getActionCommand())) {
                 sendConfirmation();
+            } else if ("reload".equals(e.getActionCommand())) {
+                currentFormId = Workflow.getNextComplete();
+                if(currentFormId == -1) {
+                    idLabel.setText("Current Form ID: No form available.");
+                } else {
+                    //currentForm = MedicalForm.getForm(currentFormId); //TODO: FIX MEDICAL FORM
+                    idLabel.setText("Current Form ID: " + currentFormId);
+                }
             }
     }
 
@@ -157,7 +202,7 @@ public class Approver implements ActionListener{
         mLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         message.add(mLabel);
 
-        //Add to frame
+        //Add to scroll panel
         inboxScr.add(message);
         inboxScr.revalidate();
         inboxScr.repaint();
