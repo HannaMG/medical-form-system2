@@ -176,11 +176,14 @@ public class Approver implements ActionListener{
                 sendConfirmation();
             } else if ("reload".equals(e.getActionCommand())) {
                 currentFormId = Workflow.getNextComplete();
+                currentFormId = 123; //TODO: delete laterrrr
+                currentForm = new MedicalForm("Peter Parker", currentFormId, "Fairfax", "Tuberculosis", 456, 2020); //TODO: delete laterrrr
                 if(currentFormId == -1) {
                     idLabel.setText("Current Form ID: No form available.");
                 } else {
                     //currentForm = MedicalForm.getForm(currentFormId); //TODO: FIX MEDICAL FORM
-                    idLabel.setText("Current Form ID: " + currentFormId);
+                    idLabel.setText("Current Form ID: " + currentFormId); 
+                    cTextArea.setText("Your submission has been recieved! Here is a copy of your answers: \n\n Name: \n DOB: \n Address: \n Alien Number: \n Medical Condition: \n Phone Number: \n Condition Start Date: \n");
                 }
             }
     }

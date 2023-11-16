@@ -104,4 +104,32 @@ public class MedicalForm {
         return "Status will change to: " + StatusChange;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getDOB() {
+        return dob;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getAlienNumber() {
+        return alienNumber;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public int getDateWhenConditionStarted() {
+        return dateWhenConditionStarted;
+    }
+
 }
