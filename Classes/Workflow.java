@@ -85,7 +85,7 @@ public class Workflow {
     public static String getNextStepsMessage(String condition) {
         for(int i=0; i<nextStepsList.size(); i++) {
             if(nextStepsList.get(i)[0].equals(condition)) {
-                return nextStepsList.get(1)[1];
+                return nextStepsList.get(i)[1];
             }
         }
         return "";

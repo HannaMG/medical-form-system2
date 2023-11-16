@@ -7,12 +7,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.util.ArrayList;
+
 public class Approver implements ActionListener{
     private JFrame inbox = new JFrame("User Inbox");
     private JTextArea cTextArea = new JTextArea("Your submission has been recieved! Here is a copy of your answers: \n\n Name: \n DOB: \n Address: \n Alien Number: \n Medical Condition: \n Phone Number: \n Condition Start Date: \n", 5, 10);
     private JTextArea nTextArea = new JTextArea(10, 50);
     private JPanel inboxScr = new JPanel();
     private JLabel idLabel;
+    private JTextField saveCondition;
+    JComboBox conditionList;
 
     private int currentFormId;
     private MedicalForm currentForm;
@@ -54,6 +58,7 @@ public class Approver implements ActionListener{
         } else {
             //currentForm = MedicalForm.getForm(currentFormId); //TODO: FIX MEDICAL FORM
             idLabel = new JLabel("Current Form ID: " + currentFormId);
+            cTextArea.setText("Your submission has been recieved! Here is a copy of your answers: \n\n Name: " + currentForm.getName() + "\n DOB: " + currentForm.getDOB() + "\n Address: " + currentForm.getAddress() + "\n Alien Number: " + currentForm.getAlienNumber() + "\n Medical Condition: " + currentForm.getCondition() + "\n Phone Number: " + currentForm.getPhoneNumber() + "\n Condition Start Date: " + currentForm.getDateWhenConditionStarted() + "\n");
         }
         idLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         info.add(idLabel);
@@ -123,8 +128,11 @@ public class Approver implements ActionListener{
         nextSteps.add(nLabel);
         
         //Medical Condition Drop Down
-        String[] medicalConditions = {"Tuberculosis", "HIV/AIDS", "Malaria", "Zika Virus", "Measles", "Hepatitis", "Chickenpox"};
-        JComboBox conditionList = new JComboBox(medicalConditions);
+        ArrayList<String> medicalConditions = new ArrayList<>();
+        medicalConditions.add("");
+        conditionList = new JComboBox(medicalConditions.toArray());
+        conditionList.setActionCommand("conditionList");
+        conditionList.addActionListener(this);
         nextSteps.add(conditionList);
 
         //Text Area
@@ -137,6 +145,33 @@ public class Approver implements ActionListener{
         nSend.addActionListener(this);
         nextSteps.add(nSend);
         
+        //"Add Next Steps" Sub-Panel
+        JPanel addNextSteps = new JPanel();
+        FlowLayout anLayout = new FlowLayout();
+        addNextSteps.setLayout(anLayout);
+        addNextSteps.setAlignmentX(Component.CENTER_ALIGNMENT);
+        addNextSteps.setPreferredSize(new Dimension(800, 40));
+        addNextSteps.setMaximumSize(new Dimension(800, 40));
+
+        //"Add Next Steps" Text
+        JLabel anLabel = new JLabel("New Condition: ");
+        anLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        addNextSteps.add(anLabel);
+
+        //"Add Next Steps" text field
+        saveCondition = new JTextField(20);
+        addNextSteps.add(saveCondition);
+
+        //"Add Next Steps" button
+        JButton saveMessage = new JButton("Save Message");
+        saveMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
+        saveMessage.setActionCommand("saveMessage");
+        saveMessage.addActionListener(this);
+        addNextSteps.add(saveMessage);
+
+        //Add "Add Next Steps" Sub-Panel to Necessary Next Steps Panel
+        nextSteps.add(addNextSteps);
+
         //Add to scroll panel
         approverScr.add(nextSteps);
 
@@ -183,8 +218,20 @@ public class Approver implements ActionListener{
                 } else {
                     //currentForm = MedicalForm.getForm(currentFormId); //TODO: FIX MEDICAL FORM
                     idLabel.setText("Current Form ID: " + currentFormId); 
-                    cTextArea.setText("Your submission has been recieved! Here is a copy of your answers: \n\n Name: \n DOB: \n Address: \n Alien Number: \n Medical Condition: \n Phone Number: \n Condition Start Date: \n");
+                    cTextArea.setText("Your submission has been recieved! Here is a copy of your answers: \n\n Name: " + currentForm.getName() + "\n DOB: " + currentForm.getDOB() + "\n Address: " + currentForm.getAddress() + "\n Alien Number: " + currentForm.getAlienNumber() + "\n Medical Condition: " + currentForm.getCondition() + "\n Phone Number: " + currentForm.getPhoneNumber() + "\n Condition Start Date: " + currentForm.getDateWhenConditionStarted() + "\n");
+                    if(!(Workflow.getNextStepsMessage(currentForm.getCondition()).equals(""))) {
+                        conditionList.setSelectedItem(currentForm.getCondition());
+                    } else {
+                        conditionList.setSelectedItem("");
+                    }
                 }
+            } else if ("saveMessage".equals(e.getActionCommand())) {
+                Workflow.insertNextSteps(saveCondition.getText(), nTextArea.getText());
+                conditionList.addItem(saveCondition.getText());
+
+            } else if ("conditionList".equals(e.getActionCommand())) {
+                nextStepsMessage = Workflow.getNextStepsMessage(conditionList.getSelectedItem().toString());
+                nTextArea.setText(nextStepsMessage);
             }
     }
 
