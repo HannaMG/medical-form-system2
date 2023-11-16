@@ -225,6 +225,7 @@ public class Approver implements ActionListener{
                         conditionList.setSelectedItem("");
                     }
                 }
+                currentForm.changeStatus("Approved");
             } else if ("saveMessage".equals(e.getActionCommand())) {
                 Workflow.insertNextSteps(saveCondition.getText(), nTextArea.getText());
                 conditionList.addItem(saveCondition.getText());
