@@ -1,11 +1,14 @@
 //package gmu.cs321;
 package Classes;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The MedicalFormAndApprover class represents a GUI application that allows users to fill out
+ * and manage a medical form related to infectious diseases.
+ */
 public class MedicalFormAndApprover extends JFrame {
     private final JTextField nameTextField = new JTextField();
     private final JTextField dobTextField = new JTextField();
@@ -14,7 +17,9 @@ public class MedicalFormAndApprover extends JFrame {
     private final JComboBox<String> conditions = new JComboBox<>();
     private final JTextField phoneNumberField = new JTextField();
     private final JTextField conditionStartDateField = new JTextField();
-
+    /**
+     * Constructor for MedicalFormAndApprover.
+     */
     public MedicalFormAndApprover () {
         setTitle("Medical Form");
         setSize(550, 450);
@@ -66,7 +71,9 @@ public class MedicalFormAndApprover extends JFrame {
 
         setVisible(true);
     }
-
+    /**
+     * Creates and displays a login dialog for user authentication.
+     */
     private static void login() {
         JDialog loginDialog = new JDialog((Frame)null, "Login", true);
         loginDialog.setSize(350, 200);
@@ -100,7 +107,10 @@ public class MedicalFormAndApprover extends JFrame {
 
         loginDialog.setVisible(true);
     }
-
+    /**
+     * Creates and returns a submit button.
+     * @return  The submit button.
+     */
     private JButton createSubmitButton() {
         JButton submitButton = new JButton("Submit Form");
         submitButton.addActionListener(e -> {
@@ -108,19 +118,28 @@ public class MedicalFormAndApprover extends JFrame {
         });
         return submitButton;
     }
-
+    /**
+     * Creates and returns a delete button to reset the form fields.
+     * @return The delete button.
+     */
     private JButton createDeleteButton() {
         JButton deleteButton = new JButton("Delete Form");
         deleteButton.addActionListener(e -> resetFormFields());
         return deleteButton;
     }
-
+    /**
+     * Creates and returns a new form button.
+     * @return The new form button.
+     */
     private JButton createNewFormButton() {
         JButton newFormButton = new JButton("Create New Form");
         newFormButton.addActionListener(e -> resetFormFields());
         return newFormButton;
     }
-
+    /**
+     * Creates and returns a save button to save the form.
+     * @return The save button.
+     */
     private JButton createSaveButton() {
         JButton saveButton = new JButton("Save Form");
         saveButton.addActionListener(e -> {
@@ -129,7 +148,9 @@ public class MedicalFormAndApprover extends JFrame {
         });
         return saveButton;
     }
-
+    /**
+     * Resets the form to default.
+     */
     private void resetFormFields() {
         nameTextField.setText("");
         dobTextField.setText("");
@@ -138,7 +159,9 @@ public class MedicalFormAndApprover extends JFrame {
         conditions.setSelectedIndex(0);
         System.out.println("Form has been reset.");
     }
-
+    /**
+     * Displays the data entered in the form in a new window.
+     */
     private void showFormDataScreen() {
         StringBuilder formDataBuilder = new StringBuilder();
 
@@ -152,8 +175,6 @@ public class MedicalFormAndApprover extends JFrame {
         formDataBuilder.append("Condition Start Date: ").append(conditionStartDateField.getText()).append("<br/>");
         formDataBuilder.append("</body></html>");
 
-        MedicalForm.createNewForm(nameTextField.getText(), Integer.parseInt(dobTextField.getText()), addressTextField.getText(), conditions.getSelectedItem().toString(), Integer.parseInt(alienNumberTextField.getText()), Integer.parseInt(conditionStartDateField.getText()), Integer.parseInt(phoneNumberField.getText()));
-
         String formData = formDataBuilder.toString();
 
         JFrame formDataFrame = new JFrame("Submitted Form Data");
@@ -165,7 +186,9 @@ public class MedicalFormAndApprover extends JFrame {
 
         formDataFrame.setVisible(true);
     }
-
+    /**
+     * Debugging purposes.
+     */
     private void printFormData() {
         System.out.println("Name: " + nameTextField.getText());
         System.out.println("DOB: " + dobTextField.getText());
@@ -176,12 +199,13 @@ public class MedicalFormAndApprover extends JFrame {
         System.out.println("Phone Numer: " + conditionStartDateField.getText());
 
     }
+    /**
+     * The main
+     * @param args Command line arguments
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             login();
         });
-
-        Approver a = new Approver();
-        a.showApproverScreen();
     }
 }
