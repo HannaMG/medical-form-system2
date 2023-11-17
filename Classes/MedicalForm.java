@@ -34,13 +34,14 @@ public class MedicalForm {
     /**
      * Constructor to initialize a new medicalForm object.
      */
-    public MedicalForm ( String name, int dob, String address, String condition, int alienNumber, int dateWhenConditionStarted ) {
+    public MedicalForm ( String name, int dob, String address, String condition, int alienNumber, int dateWhenConditionStarted, int phoneNumber ) {
         this.name = name;
         this.dob = dob;
         this.address = address;
         this.condition = condition;
         this. alienNumber = alienNumber;
         this.dateWhenConditionStarted = dateWhenConditionStarted;
+        this.phoneNumber = phoneNumber;
         this.formId = nextID++;
         this.status="New";
     }
@@ -48,9 +49,10 @@ public class MedicalForm {
      * Static method to create a new medicalForm object and increment nextID, the nextID starts at 0..
      * @return String message indicating that the new form has been created.
      */
-    static public String createNewForm(String name, int dob, String address, String condition, int alienNumber) {
-        MedicalForm form = new MedicalForm (name, dob, address, condition, alienNumber, nextID);
-        //Add form to database
+    static public String createNewForm(String name, int dob, String address, String condition, int alienNumber, int dateWhenConditionStarted, int phoneNumber) {
+        MedicalForm form = new MedicalForm (name, dob, address, condition, alienNumber, dateWhenConditionStarted, phoneNumber);
+        forms.add(form);
+        Workflow.insertComplete(form);
         return "New Form has been created" + form.formId;
     }
     /**
