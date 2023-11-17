@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
  * The MedicalFormAndApprover class represents a GUI application that allows users to fill out
  * and manage a medical form related to infectious diseases.
  */
-public class MedicalFormAndApprover extends JFrame {
+public class MedicalFormScreen extends JFrame {
     private final JTextField nameTextField = new JTextField();
     private final JTextField dobTextField = new JTextField();
     private final JTextField addressTextField = new JTextField();
@@ -20,7 +20,7 @@ public class MedicalFormAndApprover extends JFrame {
     /**
      * Constructor for MedicalFormAndApprover.
      */
-    public MedicalFormAndApprover () {
+    public MedicalFormScreen () {
         setTitle("Medical Form");
         setSize(550, 450);
 
@@ -101,7 +101,7 @@ public class MedicalFormAndApprover extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 loginDialog.setVisible(false);
                 loginDialog.dispose();
-                new MedicalFormAndApprover ();
+                new MedicalFormScreen ();
             }
         });
 
