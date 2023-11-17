@@ -64,8 +64,9 @@ public class Workflow {
      * @param form completed medical form whose ID will be inserted
      * @return true if insert is successful, false otherwise
      */
-    public static boolean insertComplete(MedicalForm form) {
-        return false;
+    public static boolean insertComplete(int formID) {
+        completeQueue.add(formID);
+        return true;
     }
 
     /**

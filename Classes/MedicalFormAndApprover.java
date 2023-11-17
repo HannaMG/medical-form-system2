@@ -1,4 +1,5 @@
-package gmu.cs321;
+//package gmu.cs321;
+package Classes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -151,6 +152,8 @@ public class MedicalFormAndApprover extends JFrame {
         formDataBuilder.append("Condition Start Date: ").append(conditionStartDateField.getText()).append("<br/>");
         formDataBuilder.append("</body></html>");
 
+        MedicalForm.createNewForm(nameTextField.getText(), Integer.parseInt(dobTextField.getText()), addressTextField.getText(), conditions.getSelectedItem().toString(), Integer.parseInt(alienNumberTextField.getText()), Integer.parseInt(conditionStartDateField.getText()), Integer.parseInt(phoneNumberField.getText()));
+
         String formData = formDataBuilder.toString();
 
         JFrame formDataFrame = new JFrame("Submitted Form Data");
@@ -177,5 +180,8 @@ public class MedicalFormAndApprover extends JFrame {
         SwingUtilities.invokeLater(() -> {
             login();
         });
+
+        Approver a = new Approver();
+        a.showApproverScreen();
     }
 }

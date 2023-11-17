@@ -56,7 +56,7 @@ public class Approver implements ActionListener{
         if(currentFormId == -1) {
             idLabel = new JLabel("Current Form ID: No form available.");
         } else {
-            //currentForm = MedicalForm.getForm(currentFormId); //TODO: FIX MEDICAL FORM
+            currentForm = MedicalForm.getForm(currentFormId); //TODO: FIX MEDICAL FORM
             idLabel = new JLabel("Current Form ID: " + currentFormId);
             cTextArea.setText("Your submission has been recieved! Here is a copy of your answers: \n\n Name: " + currentForm.getName() + "\n DOB: " + currentForm.getDOB() + "\n Address: " + currentForm.getAddress() + "\n Alien Number: " + currentForm.getAlienNumber() + "\n Medical Condition: " + currentForm.getCondition() + "\n Phone Number: " + currentForm.getPhoneNumber() + "\n Condition Start Date: " + currentForm.getDateWhenConditionStarted() + "\n");
         }
@@ -211,12 +211,12 @@ public class Approver implements ActionListener{
                 sendConfirmation();
             } else if ("reload".equals(e.getActionCommand())) {
                 currentFormId = Workflow.getNextComplete();
-                currentFormId = 123; //TODO: delete laterrrr
-                currentForm = new MedicalForm("Peter Parker", currentFormId, "Fairfax", "Tuberculosis", 456, 2020); //TODO: delete laterrrr
+                //currentFormId = 123; //TODO: delete laterrrr
+                //currentForm = new MedicalForm("Peter Parker", currentFormId, "Fairfax", "Tuberculosis", 456, 2020); //TODO: delete laterrrr
                 if(currentFormId == -1) {
                     idLabel.setText("Current Form ID: No form available.");
                 } else {
-                    //currentForm = MedicalForm.getForm(currentFormId); //TODO: FIX MEDICAL FORM
+                    currentForm = MedicalForm.getForm(currentFormId); //TODO: FIX MEDICAL FORM
                     idLabel.setText("Current Form ID: " + currentFormId); 
                     cTextArea.setText("Your submission has been recieved! Here is a copy of your answers: \n\n Name: " + currentForm.getName() + "\n DOB: " + currentForm.getDOB() + "\n Address: " + currentForm.getAddress() + "\n Alien Number: " + currentForm.getAlienNumber() + "\n Medical Condition: " + currentForm.getCondition() + "\n Phone Number: " + currentForm.getPhoneNumber() + "\n Condition Start Date: " + currentForm.getDateWhenConditionStarted() + "\n");
                     if(!(Workflow.getNextStepsMessage(currentForm.getCondition()).equals(""))) {
@@ -225,7 +225,9 @@ public class Approver implements ActionListener{
                         conditionList.setSelectedItem("");
                     }
                 }
-                currentForm.changeStatus("Approved");
+                if(currentForm != null) {
+                    currentForm.changeStatus("Approved");
+                }
             } else if ("saveMessage".equals(e.getActionCommand())) {
                 Workflow.insertNextSteps(saveCondition.getText(), nTextArea.getText());
                 conditionList.addItem(saveCondition.getText());

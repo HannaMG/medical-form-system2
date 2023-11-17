@@ -52,7 +52,7 @@ public class MedicalForm {
     static public String createNewForm(String name, int dob, String address, String condition, int alienNumber, int dateWhenConditionStarted, int phoneNumber) {
         MedicalForm form = new MedicalForm (name, dob, address, condition, alienNumber, dateWhenConditionStarted, phoneNumber);
         forms.add(form);
-        Workflow.insertComplete(form);
+        Workflow.insertComplete(form.formId);
         return "New Form has been created" + form.formId;
     }
     /**
@@ -93,6 +93,11 @@ public class MedicalForm {
      * @return medicalForm object.
      */
     public static MedicalForm getForm(int formId) {
+        for(int i=0; i<forms.size(); i++) {
+            if (forms.get(i).formId == formId) {
+                return forms.remove(i);
+            }
+        }
         return forms.get(formId);
     }
     /**
