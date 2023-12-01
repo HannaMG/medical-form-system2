@@ -48,6 +48,7 @@ public class Workflow {
      * @return true if savedQueue is empty, false otherwise
      */
     public static boolean isSavedEmpty() {
+        savedEmpty = savedQueue.isEmpty();
         return savedEmpty;
     }
 
@@ -56,6 +57,7 @@ public class Workflow {
      * @return true if completeQueue is empty, false otherwise
      */
     public static boolean isCompleteEmpty() {
+        completeEmpty = completeQueue.isEmpty();
         return completeEmpty;
     }
 
