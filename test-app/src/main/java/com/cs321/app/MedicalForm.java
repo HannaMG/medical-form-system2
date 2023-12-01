@@ -1,142 +1,147 @@
-package Classes;
+//package Classes;
+package com.cs321.app;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
- * @author Fernanda Garcia
- * This class serves as a template for generating medical form instances.
+ * @author Fernanda G
+ * Represents a medical form with personal and medical details of a patient.
  */
 public class MedicalForm {
-    private static List<MedicalForm> forms = new ArrayList<> (); //i had to creat this, otherwise i would get an error to Get.
-    /** Variable to compute the Last, and First name */
     private String name;
-    /** Variable to compute the date of birth */
-    private int dob;
-    /** Variable to compute the address */
+    private long dob;
     private String address;
-    /** Variable to compute condition */
     private String condition;
-    /** Variable to compute Alien Number */
     private int alienNumber;
-    /** Variable to compute date when the condition started */
-    private int dateWhenConditionStarted;
-    /** Variable to compute the phone number */
+    private long dateWhenConditionStarted;
     private long phoneNumber;
-    /** Variable to check submission */
     private boolean submit;
-    /** Variable to compute form Id. */
     private int formId;
-    /** Variable to compute the status of the form */
     private String status;
-    /** Static variable to keep track of the next ID in case the patient needs to create a new form */
-    static private int nextID = 0;
+    private static int nextID = 0;
+    private static List<MedicalForm> forms = new ArrayList<>();
     /**
-     * Constructor to initialize a new medicalForm object.
+     * Constructs a new MedicalForm with the provided details.
+     *
+     * @param name                    the name of the patient
+     * @param dob                     the date of birth of the patient
+     * @param address                 the address of the patient
+     * @param condition               the medical condition of the patient
+     * @param alienNumber             a unique identifier for the patient
+     * @param dateWhenConditionStarted the date when the condition was first diagnosed
+     * @param phoneNumber             the phone number of the patient
      */
-    public MedicalForm ( String name, int dob, String address, String condition, int alienNumber, int dateWhenConditionStarted, long phoneNumber ) {
+    public MedicalForm(String name, long dob, String address, String condition, int alienNumber, long dateWhenConditionStarted, long phoneNumber) {
         this.name = name;
         this.dob = dob;
         this.address = address;
         this.condition = condition;
-        this. alienNumber = alienNumber;
+        this.alienNumber = alienNumber;
         this.dateWhenConditionStarted = dateWhenConditionStarted;
         this.phoneNumber = phoneNumber;
-        this.formId = nextID++;
-        this.status="New";
+        this.formId = getNextID();
+        this.status = "New";
+        forms.add(this);
     }
     /**
-     * Static method to create a new medicalForm object and increment nextID, the nextID starts at 0..
-     * @return String message indicating that the new form has been created.
-     */
-    static public String createNewForm(String name, int dob, String address, String condition, int alienNumber, int dateWhenConditionStarted, long phoneNumber) {
-        MedicalForm form = new MedicalForm (name, dob, address, condition, alienNumber, dateWhenConditionStarted, phoneNumber);
-        forms.add(form);
-        Workflow.insertComplete(form.formId);
-        return "New Form has been created" + form.formId;
-    }
-    /**
-     * Method to submit the medical form.
-     * @return true if successful, false otherwise.
+     * Submits the medical form.
+     * @return true if the form was successfully submitted, false if it was already submitted.
      */
     public boolean submitForm() {
-        // Implementation here
-        return true;
+        if (!submit) {
+            submit = true;
+            status = "Submitted";
+            return true;
+        }
+        return false;
     }
     /**
-     * Method to verify will be used later on to check if the information of the form was valid.
-     * @return true if successful, false otherwise.
+     * Verifies the medical form details.
+     * @return true if the details are valid, false otherwise.
      */
     public boolean verifyForm() {
-        // Implementation here
+        return dob > 0 && !address.isEmpty() && !condition.isEmpty() && alienNumber > 0 &&phoneNumber>0;
+    }
+    /**
+     * Saves the medical form.
+     * @return true if the form was successfully saved
+     */
+    public boolean saveForm() {
         return true;
     }
     /**
-     * Method created in case the patient wants to update the medical form.
-     * @return String message indicating the status of the form, if it was updated or not.
+     * Updates the medical form status to "Updated".
+     * @return the new status of the form.
      */
     public String updateForm() {
-        // Implementation here
-        return "Updated";
+        status = "Updated";
+        return status;
     }
     /**
-     * Method to delete the medical form.
-     * @return true if successful, false otherwise.
+     * Deletes the medical form from the system.
+     * @return true if the form was successfully deleted.
      */
     public boolean deleteForm() {
-        // Implementation here
-        return true;
+        return forms.remove(this);
     }
     /**
-     * Method to get a medical form by its ID.
-     * @param formId The ID of the medical form to get.
-     * @return medicalForm object.
+     * Creates and adds a new medical form to the system.
+     * @param name                    the name
+     * @param dob                     the date of birth
+     * @param address                 the address
+     * @param condition               the medical condition
+     * @param alienNumber             a unique number
+     * @param dateWhenConditionStarted the date when the condition was first diagnosed
+     * @param phoneNumber             the phone number
+     * @return the newly created MedicalForm object
+     */
+    public static MedicalForm createNewForm(String name, long dob, String address, String condition, int alienNumber, long dateWhenConditionStarted, long phoneNumber) {
+        MedicalForm form = new MedicalForm(name, dob, address, condition, alienNumber, dateWhenConditionStarted, phoneNumber);
+        return form;
+    }
+
+    /**
+     * Retrieves a medical form by its ID.
+     * @param formId the ID of the medical form to retrieve
+     * @return the MedicalForm object with the specified ID, or null if not found
      */
     public static MedicalForm getForm(int formId) {
-        for(int i=0; i<forms.size(); i++) {
-            if (forms.get(i).formId == formId) {
-                return forms.remove(i);
+        for (MedicalForm form : forms) {
+            if (form.getFormId() == formId) {
+                return form;
             }
         }
-        return forms.get(formId);
+        return null;
     }
     /**
-     * Method to change the status of the medical form.
-     * @param StatusChange The new status to be set.
-     * @return String message indicating what the new status is.
+     * Changes the status of the medical form.
+     * @param newStatus the new status to set
+     * @return a message indicating the new status
      */
-    public String changeStatus(String StatusChange) {
-        // Change the status of the form
-        this.status = StatusChange;
-        return "Status will change to: " + StatusChange;
+    public String changeStatus(String newStatus) {
+        this.status = newStatus;
+        return "Status will change to: " + newStatus;
     }
-
-    public String getName() {
-        return name;
+    /** Method to retrieve unique Id */
+    private static int getNextID() {
+        return nextID++;
     }
-
-    public int getDOB() {
-        return dob;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public int getAlienNumber() {
-        return alienNumber;
-    }
-
-    public String getCondition() {
-        return condition;
-    }
-
-    public long getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public int getDateWhenConditionStarted() {
-        return dateWhenConditionStarted;
-    }
-
+    /** Getters and Setters */
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public long getDob() { return dob; }
+    public void setDob(int dob) { this.dob = dob; }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+    public String getCondition() { return condition; }
+    public void setCondition(String condition) { this.condition = condition; }
+    public int getAlienNumber() { return alienNumber; }
+    public void setAlienNumber(int alienNumber) { this.alienNumber = alienNumber; }
+    public long getDateWhenConditionStarted() { return dateWhenConditionStarted; }
+    public void setDateWhenConditionStarted(int dateWhenConditionStarted) { this.dateWhenConditionStarted = dateWhenConditionStarted; }
+    public long getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(int phoneNumber) { this.phoneNumber = phoneNumber; }
+    public boolean isSubmitted() { return submit; }
+    public int getFormId() { return formId; }
+    public String getStatus() { return status; }
 }

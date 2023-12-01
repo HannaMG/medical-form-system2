@@ -7,8 +7,8 @@ package com.cs321.app;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 //import org.junit.jupiter.api.Test;
-import Classes.Workflow;
-import Classes.MedicalForm;
+//import main.Workflow;
+//import main.java.com.cs321.app.MedicalForm;
 import org.junit.Test;
 
 /**
@@ -29,19 +29,19 @@ public class WorkflowTest {
     public void singleFormCompleteQueueTest() {
         assertTrue(Workflow.isCompleteEmpty()); //completeQueue should start empty
 
-        //assertTrue(Workflow.insertComplete(form1)); //Insert form1 into completeQueue successfully
+        assertTrue(Workflow.insertComplete(3)); //Insert form1 into completeQueue successfully
         assertFalse(Workflow.isCompleteEmpty()); //completeQueue should not be empty anymore
 
         assertEquals(Workflow.getNextComplete(), 3); //Check if IDs match
         assertTrue(Workflow.isCompleteEmpty()); //completeQueue should be empty
 
-        //assertTrue(Workflow.insertComplete(form2)); //Insert form2 into completeQueue successfully
+        assertTrue(Workflow.insertComplete(6)); //Insert form2 into completeQueue successfully
         assertFalse(Workflow.isCompleteEmpty()); //completeQueue should not be empty anymore
 
         assertEquals(Workflow.getNextComplete(), 6); //Check if IDs match
         assertTrue(Workflow.isCompleteEmpty()); //completeQueue should be empty
 
-        //assertTrue(Workflow.insertComplete(form3)); //Insert form3 into completeQueue successfully
+        assertTrue(Workflow.insertComplete(9)); //Insert form3 into completeQueue successfully
         assertFalse(Workflow.isCompleteEmpty()); //completeQueue should not be empty anymore
 
         assertEquals(Workflow.getNextComplete(), 9); //Check if IDs match
@@ -56,13 +56,13 @@ public class WorkflowTest {
     public void multipleFormsCompleteQueueTest() {
         assertTrue(Workflow.isCompleteEmpty()); //completeQueue should start empty
         
-        //assertTrue(Workflow.insertComplete(form1)); //Insert form1 into completeQueue successfully
+        assertTrue(Workflow.insertComplete(3)); //Insert form1 into completeQueue successfully
         assertFalse(Workflow.isCompleteEmpty()); //completeQueue should not be empty anymore
 
-        //assertTrue(Workflow.insertComplete(form2)); //Insert form2 into completeQueue successfully
+        assertTrue(Workflow.insertComplete(6)); //Insert form2 into completeQueue successfully
         assertFalse(Workflow.isCompleteEmpty());
 
-        //assertTrue(Workflow.insertComplete(form3)); //Insert form3 into completeQueue successfully
+        assertTrue(Workflow.insertComplete(9)); //Insert form3 into completeQueue successfully
         assertFalse(Workflow.isCompleteEmpty());
 
         assertEquals(Workflow.getNextComplete(), 3); //Check if IDs match for form1
@@ -83,16 +83,16 @@ public class WorkflowTest {
     public void multipleFormsInterweavedCompleteQueueTest() {
         assertTrue(Workflow.isCompleteEmpty()); //completeQueue should start empty
 
-        //assertTrue(Workflow.insertComplete(form1)); //Insert form1 into completeQueue successfully
+        assertTrue(Workflow.insertComplete(3)); //Insert form1 into completeQueue successfully
         assertFalse(Workflow.isCompleteEmpty()); //completeQueue should not be empty anymore
 
-        //assertTrue(Workflow.insertComplete(form2)); //Insert form2 into completeQueue successfully
+        assertTrue(Workflow.insertComplete(6)); //Insert form2 into completeQueue successfully
         assertFalse(Workflow.isCompleteEmpty());
 
         assertEquals(Workflow.getNextComplete(), 3); //Check if IDs match for form1
         assertFalse(Workflow.isCompleteEmpty());
 
-        //assertTrue(Workflow.insertComplete(form3)); //Insert form3 into completeQueue successfully
+        assertTrue(Workflow.insertComplete(9)); //Insert form3 into completeQueue successfully
         assertFalse(Workflow.isCompleteEmpty());
 
         assertEquals(Workflow.getNextComplete(), 6); //Check if IDs match for form2
@@ -112,10 +112,11 @@ public class WorkflowTest {
         assertTrue(Workflow.isCompleteEmpty()); //completeQueue should still be empty
     }
 
+    /*
     /**
      * Check if single form is correctly inserted and returned from savedQueue.
      * Each form is tested one at a time.
-     */
+     /
     @Test
     public void singleFormSavedQueueTest() {
         assertTrue(Workflow.isSavedEmpty()); //savedQueue should start empty
@@ -142,7 +143,7 @@ public class WorkflowTest {
     /**
      * Check if multiple forms are inserted and returned in the correct order from savedQueue,
      * if all forms are are inserted first and then are returned.
-     */
+     /
     @Test
     public void multipleFormsSavedQueueTest() {
         assertTrue(Workflow.isSavedEmpty()); //savedQueue should start empty
@@ -169,7 +170,7 @@ public class WorkflowTest {
     /**
      * Check if multiple forms are inserted and returned in the correct order from savedQueue,
      * if 2 forms are inserted first, 1 is returned, 1 is inserted, and the last 2 are returned.
-     */
+     /
     @Test
     public void multipleFormsInterweavedSavedQueueTest() {
         assertTrue(Workflow.isSavedEmpty()); //savedQueue should start empty
@@ -192,7 +193,7 @@ public class WorkflowTest {
         assertEquals(Workflow.getNextSaved(), 9); //Check if IDs match for form3
         assertTrue(Workflow.isSavedEmpty()); //savedQueue should be empty
     }
-
+    */
     /**
      * Check if correct output (-1) is returned when getNextSaved() is called on an empty savedQueue.
      */

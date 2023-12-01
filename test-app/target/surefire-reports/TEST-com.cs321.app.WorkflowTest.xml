@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.cs321.app.WorkflowTest" time="0" tests="13" errors="0" skipped="0" failures="8">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.cs321.app.WorkflowTest" time="0" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="16"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-16.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\hanna\AppData\Local\Temp\surefire11680364381712301216\surefirebooter1439079264777165794.jar C:\Users\hanna\AppData\Local\Temp\surefire11680364381712301216 2023-12-01T00-47-22_170-jvmRun1 surefire9385137001445624556tmp surefire_017288716414748814492tmp"/>
+    <property name="sun.java.command" value="C:\Users\hanna\AppData\Local\Temp\surefire17207321624839041830\surefirebooter16515632649315328982.jar C:\Users\hanna\AppData\Local\Temp\surefire17207321624839041830 2023-12-01T15-38-09_566-jvmRun1 surefire6846750397151876868tmp surefire_01907208726962328710tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\hanna\Documents\GMU Documents\CS 321\Project 2\medical-form-system2\test-app\target\test-classes;C:\Users\hanna\Documents\GMU Documents\CS 321\Project 2\medical-form-system2\test-app\target\classes;C:\Users\hanna\.m2\repository\junit\junit\4.13\junit-4.13.jar;C:\Users\hanna\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\hanna\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.0.0-M1\junit-jupiter-api-5.0.0-M1.jar;C:\Users\hanna\.m2\repository\org\opentest4j\opentest4j\1.0.0-M1\opentest4j-1.0.0-M1.jar;C:\Users\hanna\.m2\repository\org\junit\platform\junit-platform-commons\1.0.0-M1\junit-platform-commons-1.0.0-M1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\hanna\AppData\Local\Temp\surefire11680364381712301216\surefirebooter1439079264777165794.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\hanna\AppData\Local\Temp\surefire17207321624839041830\surefirebooter16515632649315328982.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="16.0.1+9-24"/>
@@ -56,48 +56,13 @@
     <property name="java.class.version" value="60.0"/>
   </properties>
   <testcase name="removeNextStepsFailTest" classname="com.cs321.app.WorkflowTest" time="0"/>
-  <testcase name="multipleFormsInterweavedSavedQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at com.cs321.app.WorkflowTest.multipleFormsInterweavedSavedQueueTest(WorkflowTest.java:175)
-</failure>
-  </testcase>
-  <testcase name="multipleFormsInterweavedCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at com.cs321.app.WorkflowTest.multipleFormsInterweavedCompleteQueueTest(WorkflowTest.java:84)
-</failure>
-  </testcase>
-  <testcase name="multipleFormsCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at com.cs321.app.WorkflowTest.multipleFormsCompleteQueueTest(WorkflowTest.java:57)
-</failure>
-  </testcase>
-  <testcase name="singleFormCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at com.cs321.app.WorkflowTest.singleFormCompleteQueueTest(WorkflowTest.java:30)
-</failure>
-  </testcase>
+  <testcase name="multipleFormsInterweavedCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0"/>
+  <testcase name="multipleFormsCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0"/>
+  <testcase name="singleFormCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0"/>
   <testcase name="multipleNextStepsTest" classname="com.cs321.app.WorkflowTest" time="0"/>
   <testcase name="noAvailableNextStepsMessageTest" classname="com.cs321.app.WorkflowTest" time="0"/>
-  <testcase name="singleFormSavedQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at com.cs321.app.WorkflowTest.singleFormSavedQueueTest(WorkflowTest.java:121)
-</failure>
-  </testcase>
   <testcase name="insertNextStepsFailTest" classname="com.cs321.app.WorkflowTest" time="0"/>
-  <testcase name="emptySavedQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at com.cs321.app.WorkflowTest.emptySavedQueueTest(WorkflowTest.java:201)
-</failure>
-  </testcase>
-  <testcase name="multipleFormsSavedQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at com.cs321.app.WorkflowTest.multipleFormsSavedQueueTest(WorkflowTest.java:148)
-</failure>
-  </testcase>
+  <testcase name="emptySavedQueueTest" classname="com.cs321.app.WorkflowTest" time="0"/>
   <testcase name="singleNextStepsTest" classname="com.cs321.app.WorkflowTest" time="0"/>
-  <testcase name="emptyCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at com.cs321.app.WorkflowTest.emptyCompleteQueueTest(WorkflowTest.java:110)
-</failure>
-  </testcase>
+  <testcase name="emptyCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0"/>
 </testsuite>

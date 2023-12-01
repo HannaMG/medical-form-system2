@@ -1,7 +1,7 @@
 com\cs321\app\App.class
-Classes\MedicalFormScreen.class
-Classes\MedicalFormScreen$1.class
-Classes\MedicalForm.class
-Classes\Approver.class
-Classes\ApproverScreen.class
-Classes\Workflow.class
+com\cs321\app\MedicalFormScreen.class
+com\cs321\app\ApproverScreen.class
+com\cs321\app\Workflow.class
+com\cs321\app\Approver.class
+com\cs321\app\MedicalFormScreen$1.class
+com\cs321\app\MedicalForm.class

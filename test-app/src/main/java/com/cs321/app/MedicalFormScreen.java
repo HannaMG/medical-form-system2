@@ -1,12 +1,12 @@
-//package gmu.cs321;
-package Classes;
+package com.cs321.app;
+//package Classes;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The MedicalFormAndApprover class represents a GUI application that allows users to fill out
+ * The MedicalFormScreen represents a GUI application that allows users to fill out
  * and manage a medical form related to infectious diseases.
  */
 public class MedicalFormScreen extends JFrame {
@@ -29,7 +29,7 @@ public class MedicalFormScreen extends JFrame {
         panel.add(new JLabel("Name:"));
         panel.add(nameTextField);
 
-        panel.add(new JLabel("DOB (dd/mm/yyyy):"));
+        panel.add(new JLabel("DOB (ddmmyyyy):"));
         panel.add(dobTextField);
 
         panel.add(new JLabel("Address:"));
@@ -38,7 +38,7 @@ public class MedicalFormScreen extends JFrame {
         panel.add(new JLabel("Alien Number:"));
         panel.add(alienNumberTextField);
 
-        panel.add(new JLabel("Condition Start Date (dd/mm/yyyy):"));
+        panel.add(new JLabel("Condition Start Date (ddmmyyyy):"));
         panel.add(conditionStartDateField);
 
         panel.add(new JLabel("Phone Number:"));
@@ -163,6 +163,30 @@ public class MedicalFormScreen extends JFrame {
      * Displays the data entered in the form in a new window.
      */
     private void showFormDataScreen() {
+        
+        String dateRegex = "^\\d{2}\\d{2}\\d{4}$";
+        String phoneRegex = "^\\d{10}$";
+
+        // Check for empty fields
+        if (nameTextField.getText().trim().isEmpty() ||
+                dobTextField.getText().trim().isEmpty() ||
+                addressTextField.getText().trim().isEmpty() ||
+                alienNumberTextField.getText().trim().isEmpty() ||
+                phoneNumberField.getText().trim().isEmpty() ||
+                conditionStartDateField.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all the fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (!dobTextField.getText().matches(dateRegex) || !conditionStartDateField.getText().matches(dateRegex)) {
+            JOptionPane.showMessageDialog(this, "Invalid Date Format. Please use ddmmyyyy", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (!phoneNumberField.getText().matches(phoneRegex)) {
+            JOptionPane.showMessageDialog(this, "Phone number must be 10 digits long", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         StringBuilder formDataBuilder = new StringBuilder();
 
         formDataBuilder.append("<html><body>");
@@ -175,7 +199,7 @@ public class MedicalFormScreen extends JFrame {
         formDataBuilder.append("Condition Start Date: ").append(conditionStartDateField.getText()).append("<br/>");
         formDataBuilder.append("</body></html>");
 
-        MedicalForm.createNewForm(nameTextField.getText(), Integer.parseInt(dobTextField.getText()), addressTextField.getText(), conditions.getSelectedItem().toString(), Integer.parseInt(alienNumberTextField.getText()), Integer.parseInt(conditionStartDateField.getText()), Integer.parseInt(phoneNumberField.getText()));
+        MedicalForm.createNewForm(nameTextField.getText(), Integer.parseInt(dobTextField.getText()), addressTextField.getText(), conditions.getSelectedItem().toString(), Integer.parseInt(alienNumberTextField.getText()), Integer.parseInt(conditionStartDateField.getText()), Long.parseLong(phoneNumberField.getText()));
 
         String formData = formDataBuilder.toString();
 
@@ -209,5 +233,8 @@ public class MedicalFormScreen extends JFrame {
         SwingUtilities.invokeLater(() -> {
             login();
         });
+
+        Approver a = new Approver();
+        a.showApproverScreen();
     }
 }
