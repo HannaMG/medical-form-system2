@@ -72,7 +72,7 @@ class MedicalFormTest {
      */
     @Test
     void testCreateAndRetrieveForm() {
-        MedicalForm newForm = MedicalForm.createNewForm("Jane Doe", 1990, "456 Elm St", "Flu", 987654321, 2023, 552256789);
+        MedicalForm newForm = MedicalForm.createNewForm("Fernanda", 1990, "Whitemoss", "Hepatitis", 987654321, 2023, 3232132);
         assertNotNull(newForm, "Newly created form should not be null");
         assertEquals(newForm, MedicalForm.getForm(newForm.getFormId()), "Should retrieve the same form by its ID");
     }
