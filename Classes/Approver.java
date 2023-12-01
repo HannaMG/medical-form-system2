@@ -58,7 +58,7 @@ public class Approver implements ActionListener{
         } else {
             currentForm = MedicalForm.getForm(currentFormId); 
             idLabel = new JLabel("Current Form ID: " + currentFormId);
-            cTextArea.setText("Your submission has been recieved! Here is a copy of your answers: \n\n Name: " + currentForm.getName() + "\n DOB: " + currentForm.getDOB() + "\n Address: " + currentForm.getAddress() + "\n Alien Number: " + currentForm.getAlienNumber() + "\n Medical Condition: " + currentForm.getCondition() + "\n Phone Number: " + currentForm.getPhoneNumber() + "\n Condition Start Date: " + currentForm.getDateWhenConditionStarted() + "\n");
+            cTextArea.setText("Your submission has been recieved! Here is a copy of your answers: \n\n Name: " + currentForm.getName() + "\n DOB: " + currentForm.getDob() + "\n Address: " + currentForm.getAddress() + "\n Alien Number: " + currentForm.getAlienNumber() + "\n Medical Condition: " + currentForm.getCondition() + "\n Phone Number: " + currentForm.getPhoneNumber() + "\n Condition Start Date: " + currentForm.getDateWhenConditionStarted() + "\n");
         }
         idLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         info.add(idLabel);
@@ -218,7 +218,7 @@ public class Approver implements ActionListener{
                 } else {
                     currentForm = MedicalForm.getForm(currentFormId); //TODO: FIX MEDICAL FORM
                     idLabel.setText("Current Form ID: " + currentFormId); 
-                    cTextArea.setText("Your submission has been recieved! Here is a copy of your answers: \n\n Name: " + currentForm.getName() + "\n DOB: " + currentForm.getDOB() + "\n Address: " + currentForm.getAddress() + "\n Alien Number: " + currentForm.getAlienNumber() + "\n Medical Condition: " + currentForm.getCondition() + "\n Phone Number: " + currentForm.getPhoneNumber() + "\n Condition Start Date: " + currentForm.getDateWhenConditionStarted() + "\n");
+                    cTextArea.setText("Your submission has been recieved! Here is a copy of your answers: \n\n Name: " + currentForm.getName() + "\n DOB: " + currentForm.getDob() + "\n Address: " + currentForm.getAddress() + "\n Alien Number: " + currentForm.getAlienNumber() + "\n Medical Condition: " + currentForm.getCondition() + "\n Phone Number: " + currentForm.getPhoneNumber() + "\n Condition Start Date: " + currentForm.getDateWhenConditionStarted() + "\n");
                     if(!(Workflow.getNextStepsMessage(currentForm.getCondition()).equals(""))) {
                         conditionList.setSelectedItem(currentForm.getCondition());
                     } else {
