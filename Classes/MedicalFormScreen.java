@@ -175,6 +175,8 @@ public class MedicalFormScreen extends JFrame {
         formDataBuilder.append("Condition Start Date: ").append(conditionStartDateField.getText()).append("<br/>");
         formDataBuilder.append("</body></html>");
 
+        MedicalForm.createNewForm(nameTextField.getText(), Integer.parseInt(dobTextField.getText()), addressTextField.getText(), conditions.getSelectedItem().toString(), Integer.parseInt(alienNumberTextField.getText()), Integer.parseInt(conditionStartDateField.getText()), Long.parseLong(phoneNumberField.getText()));
+
         String formData = formDataBuilder.toString();
 
         JFrame formDataFrame = new JFrame("Submitted Form Data");
