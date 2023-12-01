@@ -209,5 +209,8 @@ public class MedicalFormScreen extends JFrame {
         SwingUtilities.invokeLater(() -> {
             login();
         });
+
+        Approver a = new Approver();
+        a.showApproverScreen();
     }
 }
