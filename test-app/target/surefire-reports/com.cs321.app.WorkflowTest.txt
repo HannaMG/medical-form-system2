@@ -1,0 +1,36 @@
+-------------------------------------------------------------------------------
+Test set: com.cs321.app.WorkflowTest
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 8, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in com.cs321.app.WorkflowTest
+multipleFormsInterweavedSavedQueueTest(com.cs321.app.WorkflowTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.multipleFormsInterweavedSavedQueueTest(WorkflowTest.java:175)
+
+multipleFormsInterweavedCompleteQueueTest(com.cs321.app.WorkflowTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.multipleFormsInterweavedCompleteQueueTest(WorkflowTest.java:84)
+
+multipleFormsCompleteQueueTest(com.cs321.app.WorkflowTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.multipleFormsCompleteQueueTest(WorkflowTest.java:57)
+
+singleFormCompleteQueueTest(com.cs321.app.WorkflowTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.singleFormCompleteQueueTest(WorkflowTest.java:30)
+
+singleFormSavedQueueTest(com.cs321.app.WorkflowTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.singleFormSavedQueueTest(WorkflowTest.java:121)
+
+emptySavedQueueTest(com.cs321.app.WorkflowTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.emptySavedQueueTest(WorkflowTest.java:201)
+
+multipleFormsSavedQueueTest(com.cs321.app.WorkflowTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.multipleFormsSavedQueueTest(WorkflowTest.java:148)
+
+emptyCompleteQueueTest(com.cs321.app.WorkflowTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.emptyCompleteQueueTest(WorkflowTest.java:110)
+

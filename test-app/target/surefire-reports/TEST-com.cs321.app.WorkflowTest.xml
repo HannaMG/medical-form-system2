@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.cs321.app.WorkflowTest" time="0" tests="13" errors="0" skipped="0" failures="8">
+  <properties>
+    <property name="java.specification.version" value="16"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\hanna\Documents\GMU Documents\CS 321\Project 2\medical-form-system2\test-app\target\test-classes;C:\Users\hanna\Documents\GMU Documents\CS 321\Project 2\medical-form-system2\test-app\target\classes;C:\Users\hanna\.m2\repository\junit\junit\4.13\junit-4.13.jar;C:\Users\hanna\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\hanna\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.0.0-M1\junit-jupiter-api-5.0.0-M1.jar;C:\Users\hanna\.m2\repository\org\opentest4j\opentest4j\1.0.0-M1\opentest4j-1.0.0-M1.jar;C:\Users\hanna\.m2\repository\org\junit\platform\junit-platform-commons\1.0.0-M1\junit-platform-commons-1.0.0-M1.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/New_York"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="16"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-16.0.1\bin"/>
+    <property name="sun.java.command" value="C:\Users\hanna\AppData\Local\Temp\surefire11680364381712301216\surefirebooter1439079264777165794.jar C:\Users\hanna\AppData\Local\Temp\surefire11680364381712301216 2023-12-01T00-47-22_170-jvmRun1 surefire9385137001445624556tmp surefire_017288716414748814492tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\hanna\Documents\GMU Documents\CS 321\Project 2\medical-form-system2\test-app\target\test-classes;C:\Users\hanna\Documents\GMU Documents\CS 321\Project 2\medical-form-system2\test-app\target\classes;C:\Users\hanna\.m2\repository\junit\junit\4.13\junit-4.13.jar;C:\Users\hanna\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\hanna\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.0.0-M1\junit-jupiter-api-5.0.0-M1.jar;C:\Users\hanna\.m2\repository\org\opentest4j\opentest4j\1.0.0-M1\opentest4j-1.0.0-M1.jar;C:\Users\hanna\.m2\repository\org\junit\platform\junit-platform-commons\1.0.0-M1\junit-platform-commons-1.0.0-M1.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\hanna"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2021-04-20"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-16.0.1"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\hanna\Documents\GMU Documents\CS 321\Project 2\medical-form-system2\test-app"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\hanna\AppData\Local\Temp\surefire11680364381712301216\surefirebooter1439079264777165794.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="16.0.1+9-24"/>
+    <property name="user.name" value="hanna"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\hanna\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\hanna\AppData\Local\Temp\"/>
+    <property name="java.version" value="16.0.1"/>
+    <property name="user.dir" value="C:\Users\hanna\Documents\GMU Documents\CS 321\Project 2\medical-form-system2\test-app"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-16.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Eclipse Adoptium\jdk-17.0.8.101-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\System32;C:\WINDOWS;C:\WINDOWS\System32\wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\hanna\GnuPG\bin;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\apache-maven-3.9.5\bin;C:\Program Files\Java\jdk-16.0.1\bin;C:\Users\hanna\AppData\Local\Microsoft\WindowsApps;C:\Users\hanna\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\hanna\.dotnet\tools;C:\Users\hanna\AppData\Local\GitHubDesktop\bin;C:\Program Files (x86)\Nmap;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="16.0.1+9-24"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="60.0"/>
+  </properties>
+  <testcase name="removeNextStepsFailTest" classname="com.cs321.app.WorkflowTest" time="0"/>
+  <testcase name="multipleFormsInterweavedSavedQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.multipleFormsInterweavedSavedQueueTest(WorkflowTest.java:175)
+</failure>
+  </testcase>
+  <testcase name="multipleFormsInterweavedCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.multipleFormsInterweavedCompleteQueueTest(WorkflowTest.java:84)
+</failure>
+  </testcase>
+  <testcase name="multipleFormsCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.multipleFormsCompleteQueueTest(WorkflowTest.java:57)
+</failure>
+  </testcase>
+  <testcase name="singleFormCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.singleFormCompleteQueueTest(WorkflowTest.java:30)
+</failure>
+  </testcase>
+  <testcase name="multipleNextStepsTest" classname="com.cs321.app.WorkflowTest" time="0"/>
+  <testcase name="noAvailableNextStepsMessageTest" classname="com.cs321.app.WorkflowTest" time="0"/>
+  <testcase name="singleFormSavedQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.singleFormSavedQueueTest(WorkflowTest.java:121)
+</failure>
+  </testcase>
+  <testcase name="insertNextStepsFailTest" classname="com.cs321.app.WorkflowTest" time="0"/>
+  <testcase name="emptySavedQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.emptySavedQueueTest(WorkflowTest.java:201)
+</failure>
+  </testcase>
+  <testcase name="multipleFormsSavedQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.multipleFormsSavedQueueTest(WorkflowTest.java:148)
+</failure>
+  </testcase>
+  <testcase name="singleNextStepsTest" classname="com.cs321.app.WorkflowTest" time="0"/>
+  <testcase name="emptyCompleteQueueTest" classname="com.cs321.app.WorkflowTest" time="0">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+	at com.cs321.app.WorkflowTest.emptyCompleteQueueTest(WorkflowTest.java:110)
+</failure>
+  </testcase>
+</testsuite>

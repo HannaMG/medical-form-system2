@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: com.cs321.app.MedicalFormTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 2, Errors: 4, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in com.cs321.app.MedicalFormTest
+submitForm(com.cs321.app.MedicalFormTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.cs321.app.MedicalFormTest.submitForm(MedicalFormTest.java:69)
+
+verifyForm(com.cs321.app.MedicalFormTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
+	at com.cs321.app.MedicalFormTest.verifyForm(MedicalFormTest.java:43)
+
+updateForm(com.cs321.app.MedicalFormTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
+	at com.cs321.app.MedicalFormTest.updateForm(MedicalFormTest.java:73)
+
+createNewForm(com.cs321.app.MedicalFormTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<...orm has been created[, 1]> but was:<...orm has been created[16]>
+	at com.cs321.app.MedicalFormTest.createNewForm(MedicalFormTest.java:29)
+
+changeStatus(com.cs321.app.MedicalFormTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at com.cs321.app.MedicalFormTest.changeStatus(MedicalFormTest.java:105)
+
+deleteForm(com.cs321.app.MedicalFormTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at com.cs321.app.MedicalFormTest.deleteForm(MedicalFormTest.java:93)
+

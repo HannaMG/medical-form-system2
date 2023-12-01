@@ -22,7 +22,7 @@ public class MedicalForm {
     /** Variable to compute date when the condition started */
     private int dateWhenConditionStarted;
     /** Variable to compute the phone number */
-    private int phoneNumber;
+    private long phoneNumber;
     /** Variable to check submission */
     private boolean submit;
     /** Variable to compute form Id. */
@@ -34,7 +34,7 @@ public class MedicalForm {
     /**
      * Constructor to initialize a new medicalForm object.
      */
-    public MedicalForm ( String name, int dob, String address, String condition, int alienNumber, int dateWhenConditionStarted, int phoneNumber ) {
+    public MedicalForm ( String name, int dob, String address, String condition, int alienNumber, int dateWhenConditionStarted, long phoneNumber ) {
         this.name = name;
         this.dob = dob;
         this.address = address;
@@ -49,7 +49,7 @@ public class MedicalForm {
      * Static method to create a new medicalForm object and increment nextID, the nextID starts at 0..
      * @return String message indicating that the new form has been created.
      */
-    static public String createNewForm(String name, int dob, String address, String condition, int alienNumber, int dateWhenConditionStarted, int phoneNumber) {
+    static public String createNewForm(String name, int dob, String address, String condition, int alienNumber, int dateWhenConditionStarted, long phoneNumber) {
         MedicalForm form = new MedicalForm (name, dob, address, condition, alienNumber, dateWhenConditionStarted, phoneNumber);
         forms.add(form);
         Workflow.insertComplete(form.formId);
@@ -131,7 +131,7 @@ public class MedicalForm {
         return condition;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 

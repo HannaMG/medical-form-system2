@@ -1,4 +1,5 @@
-package Tests;
+//package Tests;
+package com.cs321.app;
 
 /**
  * @author Fernanda Garcia
@@ -6,33 +7,34 @@ package Tests;
  */
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import Classes.MedicalForm;
+import org.junit.Test;
 
 /**
  * Used to test MedicalForm.java
  */
 public class MedicalFormTest {
-    private MedicalForm form1 = new MedicalForm ( "Garcia Fernanda", 1994, "Fairfax,Virginia", "Tuberculosis", 21, 2014 );
-    private MedicalForm form2 = new MedicalForm ( "Tejada Elon", 2020, "Manassas, Virginia", "Hepatitis", 5, 2019 );
-    private MedicalForm form3 = new MedicalForm ( "Messi Leo", 1989, "Chantilly, Virginia", "Measles", 3, 2000 );
-    private MedicalForm form4 = new MedicalForm ( "1", -5, "", "", -5, -1 );  // this has to fail
+    private MedicalForm form1 = new MedicalForm ( "Garcia Fernanda", 1994, "Fairfax,Virginia", "Tuberculosis", 21, 2014, 1 );
+    private MedicalForm form2 = new MedicalForm ( "Tejada Elon", 2020, "Manassas, Virginia", "Hepatitis", 5, 2019, 2 );
+    private MedicalForm form3 = new MedicalForm ( "Messi Leo", 1989, "Chantilly, Virginia", "Measles", 3, 2000, 3 );
+    private MedicalForm form4 = new MedicalForm ( "1", -5, "", "", -5, -1, -1 );  // this has to fail
 
 // this test will allow me to create the forms
     @Test
     public void createNewForm() {
         // Test creating forms with the info above
-        String test1 = MedicalForm.createNewForm("Garcia Fernanda", 1994, "Fairfax, Virginia", "Tuberculosis", 21);
+        String test1 = MedicalForm.createNewForm("Garcia Fernanda", 1994, "Fairfax, Virginia", "Tuberculosis", 21, 2014, 1);
         assertEquals("New Form has been created, 1", test1);
 
-        String test2 = MedicalForm.createNewForm("Tejada Elon", 2020, "Manassas, Virginia", "Hepatitis", 5);
+        String test2 = MedicalForm.createNewForm("Tejada Elon", 2020, "Manassas, Virginia", "Hepatitis", 5, 2019, 2);
         assertEquals("New Form has been created, 2", test2);
 
-        String test3 = MedicalForm.createNewForm("Messi Leo", 1989, "Chantilly, Virginia", "Measles", 3);
+        String test3 = MedicalForm.createNewForm("Messi Leo", 1989, "Chantilly, Virginia", "Measles", 3, 2000, 3);
         assertEquals("New Form has been created, 3", test3);
 
-        String test4 = MedicalForm.createNewForm("1", -5, "", "", -5);
+        String test4 = MedicalForm.createNewForm("1", -5, "", "", -5, -1, -1);
         assertNotEquals("New Form has  been created, 4", test4);  // The test will pass, but will fail when we verify
     }
 // this will check if the form is valid to be sent for submission

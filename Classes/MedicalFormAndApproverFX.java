@@ -1,4 +1,4 @@
-package gmu.cs321;
+package Classes;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
