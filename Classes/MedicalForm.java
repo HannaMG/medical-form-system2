@@ -96,6 +96,7 @@ public class MedicalForm {
      */
     public static MedicalForm createNewForm(String name, long dob, String address, String condition, int alienNumber, long dateWhenConditionStarted, long phoneNumber) {
         MedicalForm form = new MedicalForm(name, dob, address, condition, alienNumber, dateWhenConditionStarted, phoneNumber);
+        Workflow.insertComplete(form.formId);
         return form;
     }
 
